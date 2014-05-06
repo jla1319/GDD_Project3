@@ -11,4 +11,6 @@ public class SteeringAttributes : MonoBehaviour {
 
 	//weights that can be edited
 	public float seekWt = 20.0f;
+	public float pathWt = 40.0f;
+	public float avoidWt = 40.0f;
 }
