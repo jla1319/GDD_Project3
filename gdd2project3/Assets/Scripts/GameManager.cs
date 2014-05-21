@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject EnemyPrefab;
 	public GameObject PlayerPrefab;
+		
+	public float timer = 10.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -36,12 +38,20 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(timer > 0){
+			timer -= Time.deltaTime;
+			///Debug.Log(timer);
+			enemy.GetComponent<Steer> ().notMoving = true;
+		} else {
+			enemy.GetComponent<Steer> ().notMoving = false;
+			//Debug.Log("ready or not here I come!");
+		}
 	
 	}
 	
 	void findWayPoints()
 	{	
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 28; i++)
 		{
 			WayPoints.Add(GameObject.Find("WayPoint"+i));
 		}

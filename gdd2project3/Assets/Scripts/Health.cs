@@ -1,14 +1,14 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Health : MonoBehaviour {
-	
+
 	public float health = 100;
 	// Use this for initialization
 	void Start () {
 		InvokeRepeating("AddHealth", 0, 1);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown ("f"))
@@ -19,6 +19,7 @@ public class Health : MonoBehaviour {
 		if(health <= 0)
 		{
 			CancelInvoke("AddHealth");
+			Application.LoadLevel("gameover");
 		}
 	}
 	// This is called once every second
@@ -29,5 +30,8 @@ public class Health : MonoBehaviour {
 			health = 100;
 		}
 		print (health);
+	}
+	public void DealDamage (float damage) {
+		health -= damage;
 	}
 }

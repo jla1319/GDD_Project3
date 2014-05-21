@@ -27,6 +27,8 @@ public class Steer : MonoBehaviour {
 	private Vector3 acceleration;	//change in velocity per second
 	private Vector3 velocity;		//change in position per second
 	private Vector3 location;
+
+	public bool notMoving;
 	
 	//movement mutators
 	public Vector3 Velocity 
@@ -63,33 +65,38 @@ public class Steer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//CalcSteeringForce ();
-		switchWeights ();
-		Vector3 s = Seek (player.transform.position);
-		Vector3 f = pathFollow ();
+		if(notMoving == false){
+			//CalcSteeringForce ();
+			switchWeights ();
+			Vector3 s = Seek (player.transform.position);
+			Vector3 f = pathFollow ();
 
-		s *= attr.seekWt;
-		f *= attr.pathWt;
-
-		ApplyForce (s);
-		ApplyForce (f);
-		
-		velocity += acceleration * Time.deltaTime;
-		velocity.y = 0;	// we are staying in the x/z plane
-		velocity = Vector3.ClampMagnitude (velocity, attr.maxSpeed); //similar to limit
-		
-		//orient the transform to face where we going
-		if (velocity != Vector3.zero)
-			transform.forward = velocity.normalized;
-		
-		// keep us grounded
-		velocity.y -= gravity;
-		
-		// the CharacterController moves us subject to physical constraints
-		characterController.Move (velocity * Time.deltaTime);
-		//reset acceleration for next cycle
-		acceleration = Vector3.zero;
-		location = transform.position;
+			s *= attr.seekWt;
+			f *= attr.pathWt;
+			//
+			ApplyForce (s);
+			ApplyForce (f);
+			
+			velocity += acceleration * Time.deltaTime;
+			velocity.y = 0;	// we are staying in the x/z plane
+			velocity = Vector3.ClampMagnitude (velocity, attr.maxSpeed); //similar to limit
+			
+			//orient the transform to face where we going
+			if (velocity != Vector3.zero)
+				transform.forward = velocity.normalized;
+			
+			// keep us grounded
+			velocity.y -= gravity;
+			
+			// the CharacterController moves us subject to physical constraints
+			characterController.Move (velocity * Time.deltaTime);
+			//reset acceleration for next cycle
+			acceleration = Vector3.zero;
+			location = transform.position;
+		} else {
+			acceleration = Vector3.zero;
+			velocity = Vector3.zero;
+		}
 	}
 	
 	//calculate and apply steering forces
@@ -257,7 +264,7 @@ public class Steer : MonoBehaviour {
 	public void switchWeights()
 	{
 		var dist = Vector3.Distance(player.transform.position, transform.position);
-		Debug.Log(dist); 
+		//Debug.Log(dist); 
 
 		if(dist < 15.0f)
 		{

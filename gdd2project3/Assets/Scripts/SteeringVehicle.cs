@@ -58,8 +58,7 @@ public class SteeringVehicle : MonoBehaviour {
 	void Update () {
 		//CalcSteeringForce ();
 		Vector3 f = pathFollow ();
-		
-		f = f;
+
 		ApplyForce (f);
 
 		velocity += acceleration * Time.deltaTime;
