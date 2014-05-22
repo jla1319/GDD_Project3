@@ -14,7 +14,7 @@ public class DealDamage : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GameObject player = GameObject.Find ("First Person Controller");
-		GameObject enemy = GameObject.Find ("Enemy-new(Clone)");
+		GameObject enemy = GameObject.Find ("Enemy-Final(Clone)");
 		Vector3 playerLocation = player.transform.position;
 		Vector3 enemyLocation = enemy.transform.position;
 		float totalDistance = Mathf.Abs(playerLocation.x - enemyLocation.x) + (Mathf.Abs(playerLocation.y - enemyLocation.y) - 2) + Mathf.Abs(playerLocation.z - enemyLocation.z);

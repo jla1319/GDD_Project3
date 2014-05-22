@@ -20,7 +20,7 @@ public class GameOver : MonoBehaviour {
 	void MenuWindow (int windowID)
 	{
 		
-		GUILayout.Label("Insert creepypasta text here + GAME OVER");
+		GUILayout.Label("<color=#FF0000>I found you....</color>");
 		
 		
 		if(GUILayout.Button("Back to the start", GUILayout.MinHeight(50))){

@@ -4,7 +4,6 @@ using System.Collections;
 public class PickupObject : MonoBehaviour {
 	new public string name;
 
-
 	// Use this for initialization
 	void Start () {
 		Debug.Log("I am an object!");
@@ -26,6 +25,7 @@ public class PickupObject : MonoBehaviour {
 	}
 
 	void DestroyObject(){
+		GameObject.Find("MainGO").GetComponent<ItemList>().ItemFound(name);
 		Destroy(this.gameObject);
 	}
 

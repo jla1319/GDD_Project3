@@ -19,7 +19,7 @@ public class StartGame : MonoBehaviour {
 	void MenuWindow (int windowID)
 	{
 		
-		GUILayout.Label("Insert creepypasta text here");
+		GUILayout.Label("Playing Hide & Seek by Yourself:\n\nRule #1: You must not leave the house until the ritual is completed.\nRule #2: You must turn off every single light in the house while playing.\nRule #3: You must keep quiet while hiding.\nRule #4: Do not continue the ritual for more than one or two hours.\nRule #5: <color=#FF0000>You must burn the doll at the end of the ritual to keep the spirit from coming back...</color>\n\n\n \"I...I don't know what I did wrong...I messed up...I messed up!\nI have to kill it...I'm sure there's a way to kill it!\"");
 		
 		
 		if(GUILayout.Button("Begin", GUILayout.MinHeight(50))){
